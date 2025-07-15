@@ -74,50 +74,57 @@ module.exports = async (req, res) => {
 
     // Email content
     const mailOptions = {
-      from: `"${name}" <${gmailUser}>`,
+      from: `"Website Contact Form" <${gmailUser}>`,
       to: adminEmail,
-      subject: `Contact Form: ${subject} - from ${name}`,
+      subject: `🔔 New Contact: ${name} sent you a message - "${subject}"`,
       text: `
-Contact Form Submission
+Hi there!
 
+You have received a new message from your website contact form.
+
+👤 VISITOR DETAILS:
 Name: ${name}
 Email: ${email}
 Subject: ${subject}
 
-Message:
+💬 MESSAGE FROM ${name.toUpperCase()}:
 ${message}
 
 ---
-This email was sent from your contact form.
+📧 Reply directly to ${email} to respond to this person.
+🌐 This message was sent from your website contact form.
       `,
 html: `
         <div style="font-family: 'Arial', sans-serif; max-width: 600px; margin: 20px auto; background-color: #f0f4fa; border-radius: 10px; padding: 20px; border: 1px solid #e0e0e0;">
-          <header style="background-color: #003366; color: #ffffff; text-align: center; padding: 10px 0; border-radius: 10px 10px 0 0;">
-            <h2 style="margin: 0;">Contact Form Submission</h2>
+          <header style="background-color: #003366; color: #ffffff; text-align: center; padding: 15px 0; border-radius: 10px 10px 0 0;">
+            <h2 style="margin: 0; font-size: 18px;">🔔 New Contact from Your Website</h2>
+            <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.9;">${name} sent you a message</p>
           </header>
 
-          <section style="background-color: #ffffff; padding: 20px; border-radius: 0 0 10px 10px;">
-            <p style="color: #444;">
-              <strong>Name:</strong> ${name}
-            </p>
-            <p style="color: #444;">
-              <strong>Email:</strong> <a href="mailto:${email}" style="color: #1a73e8; text-decoration: none;">${email}</a>
-            </p>
-            <p style="color: #444;">
-              <strong>Subject:</strong> ${subject}
-            </p>
-            <p style="color: #444;">
-              <strong>Message:</strong>
-            </p>
-            <blockquote style="color: #444; background-color: #f7f9fc; border-left: 4px solid #003366; margin: 10px 0; padding: 10px;">
-              ${message}
-            </blockquote>
+          <section style="background-color: #ffffff; padding: 25px; border-radius: 0 0 10px 10px;">
+            <div style="background-color: #e8f4f8; border-left: 4px solid #003366; padding: 15px; margin-bottom: 20px; border-radius: 0 5px 5px 0;">
+              <h3 style="margin: 0 0 10px 0; color: #003366; font-size: 16px;">👤 Visitor Information</h3>
+              <p style="margin: 5px 0; color: #444;"><strong>Name:</strong> ${name}</p>
+              <p style="margin: 5px 0; color: #444;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #1a73e8; text-decoration: none; font-weight: bold;">${email}</a></p>
+              <p style="margin: 5px 0; color: #444;"><strong>Subject:</strong> ${subject}</p>
+            </div>
+
+            <div style="margin: 20px 0;">
+              <h3 style="color: #003366; font-size: 16px; margin: 0 0 10px 0;">💬 Message from ${name}:</h3>
+              <div style="background-color: #f9f9f9; border: 1px solid #e0e0e0; padding: 15px; border-radius: 5px; line-height: 1.6; color: #333;">
+                ${message.replace(/\n/g, '<br>')}
+              </div>
+            </div>
+
+            <div style="background-color: #f0f8ff; padding: 15px; border-radius: 5px; margin-top: 20px; text-align: center;">
+              <p style="margin: 0; color: #003366; font-weight: bold;">📧 Ready to Reply?</p>
+              <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Click on <a href="mailto:${email}" style="color: #1a73e8; text-decoration: none;">${email}</a> above to respond directly to ${name}</p>
+            </div>
           </section>
 
           <footer style="text-align: center; margin-top: 20px; font-size: 12px; color: #666;">
-            <p>
-              This email was sent from your contact form. Please do not reply to this email directly.
-            </p>
+            <p style="margin: 0;">🌐 This message was sent from your website contact form</p>
+            <p style="margin: 5px 0 0 0;">Sent on ${new Date().toLocaleString()}</p>
           </footer>
         </div>
       `,
