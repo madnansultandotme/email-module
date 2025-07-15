@@ -1,0 +1,8 @@
+index.js
+test-email.js
+test-deployed-api.bat
+test-curl.bat
+.env
+.env.example
+node_modules
+.git
