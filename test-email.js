@@ -1,11 +1,11 @@
-const fetch = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 // Test data
 const testData = {
-  name: 'John Doe',
-  email: 'john.doe@example.com',
-  subject: 'Test Contact Form',
-  message: 'This is a test message from the contact form. If you receive this, the email system is working correctly!'
+  "name": "John Doe",
+  "email": "ats7531331@gmail.com",
+  "subject": "Test Contact Form",
+  "message": "This is a test message from the contact form. If you receive this, the email system is working correctly!"
 };
 
 // Test function

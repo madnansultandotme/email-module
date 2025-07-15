@@ -3,18 +3,26 @@
   "version": "1.0.0",
   "description": "Lightweight Node.js backend for contact form email handling",
   "main": "index.js",
+  "module": "cjs",
   "scripts": {
     "start": "node index.js",
     "dev": "node index.js"
   },
   "dependencies": {
-    "nodemailer": "^6.9.7",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.9.7"
   },
   "engines": {
     "node": ">=18.x"
   },
-  "keywords": ["nodejs", "express", "email", "vercel", "serverless"],
+  "keywords": [
+    "nodejs",
+    "express",
+    "email",
+    "vercel",
+    "serverless"
+  ],
   "author": "",
   "license": "MIT"
 }
