@@ -1,0 +1,12 @@
+{
+  "functions": {
+    "api/send-email.js": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "GMAIL_USER": "@gmail_user",
+    "GMAIL_PASS": "@gmail_pass",
+    "ADMIN_EMAIL": "@admin_email"
+  }
+}
